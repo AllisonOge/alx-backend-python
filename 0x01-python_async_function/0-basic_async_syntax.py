@@ -5,8 +5,11 @@ a coroutine that takes an integer argument max_delay
 which randomly waits between 0 and max_delay
 """
 import random
+import asyncio
 
 
-def wait_random(max_delay=10):
+async def wait_random(max_delay=10):
     """return a random number between 0 and max_delay"""
-    return random.randint(0, max_delay)
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay
